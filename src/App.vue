@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     next() {
-      (this.index < this.questions.length) ? this.index++ : alert('Quiz Finished! Hit refresh to go another round...');
+      (this.questions.length - 1 > this.index) ? this.index++ : alert('Quiz Finished! Hit refresh to go another round...');
     },
     increment(isCorrect) {
       if(isCorrect) {

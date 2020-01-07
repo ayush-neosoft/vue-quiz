@@ -16,13 +16,18 @@
         </b-list-group-item>
       </b-list-group>
 
-      <b-button variant="primary"
+      <b-button 
+        variant="primary"
         @click="submitAnswer"
-      >
-        Submit
+        v-if="!answered && selectedOption !== null"
+      > Submit
       </b-button>
 
-      <b-button variant="success" @click.prevent="next">Next</b-button>
+      <b-button variant="success"
+        @click.prevent="next"
+        v-if="answered"
+      > Next
+      </b-button>
     </b-jumbotron>
   </div>
 </template>
@@ -55,12 +60,11 @@ export default {
     },
     submitAnswer() {
       this.answered = true
-      let isCorrect = false
 
+      let isCorrect = false
       if(this.selectedOption === this.correctOption) {
         isCorrect = true
       }
-
       this.increment(isCorrect);
     },
     answerClass(index) {
